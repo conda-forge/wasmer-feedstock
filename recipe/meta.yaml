@@ -507,10 +507,10 @@ about:
     - library_licenses/walkdir-COPYING
     - library_licenses/walkdir-LICENSE-MIT
     - library_licenses/walkdir-UNLICENSE
-    - library_licenses/wasmer_enumset_derive-LICENSE-APACHE
-    - library_licenses/wasmer_enumset_derive-LICENSE-MIT
-    - library_licenses/wasmer_enumset-LICENSE-APACHE
-    - library_licenses/wasmer_enumset-LICENSE-MIT
+    - library_licenses/enumset_derive-LICENSE-APACHE
+    - library_licenses/enumset_derive-LICENSE-MIT
+    - library_licenses/enumset-LICENSE-APACHE
+    - library_licenses/enumset-LICENSE-MIT
     - library_licenses/wasmer-c-api-LICENSE
     - library_licenses/wasmer-cache-LICENSE
     - library_licenses/wasmer-cli-LICENSE
