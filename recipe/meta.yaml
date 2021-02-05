@@ -88,6 +88,12 @@ about:
     - library_licenses/blake2b_simd-LICENSE  # [win]
     - library_licenses/bumpalo-LICENSE-APACHE  # [win]
     - library_licenses/bumpalo-LICENSE-MIT  # [win]
+    - library_licenses/cmake-LICENSE-APACHE  # [win]
+    - library_licenses/cmake-LICENSE-MIT  # [win]
+    - library_licenses/encoding_rs-LICENSE-APACHE  # [win]
+    - library_licenses/encoding_rs-LICENSE-MIT  # [win]
+    - library_licenses/flate2-LICENSE-APACHE  # [win]
+    - library_licenses/flate2-LICENSE-MIT  # [win]
     - library_licenses/hermit-abi-LICENSE-APACHE  # [win]
     - library_licenses/hermit-abi-LICENSE-MIT  # [win]
     - library_licenses/js-sys-LICENSE-APACHE  # [win]
@@ -108,6 +114,10 @@ about:
     - library_licenses/sdl2-sys-LICENSE  # [win]
     - library_licenses/socket2-LICENSE-APACHE  # [win]
     - library_licenses/socket2-LICENSE-MIT  # [win]
+    - library_licenses/tar-LICENSE-APACHE  # [win]
+    - library_licenses/tar-LICENSE-MIT  # [win]
+    - library_licenses/unidiff-LICENSE-MIT  # [win]
+    - library_licenses/version-compare-LICENSE-MIT  # [win]
     - library_licenses/wasi-LICENSE-APACHE  # [win]
     - library_licenses/wasi-LICENSE-MIT  # [win]
     - library_licenses/wasm-bindgen-backend-LICENSE-APACHE  # [win]
@@ -131,6 +141,8 @@ about:
     - library_licenses/winapi-util-UNLICENSE  # [win]
     - library_licenses/winapi-x86_64-pc-windows-gnu-LICENSE-APACHE  # [win]
     - library_licenses/winapi-x86_64-pc-windows-gnu-LICENSE-MIT  # [win]
+    - library_licenses/xattr-LICENSE-APACHE  # [win]
+    - library_licenses/xattr-LICENSE-MIT  # [win]
 
 
     - library_licenses/more-asserts-LICENSE-CC0
