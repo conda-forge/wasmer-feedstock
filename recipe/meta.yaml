@@ -1,5 +1,5 @@
 {% set name = "wasmer" %}
-{% set version = "1.0.1" %}
+{% set version = "1.0.2" %}
 
 package:
   name: {{ name }}
@@ -7,12 +7,12 @@ package:
 
 source:
   url: https://github.com/wasmerio/{{ name }}/archive/{{ version }}.tar.gz
-  sha256: ca5ea30bfd0700b5f89dace19516991dbc9ef38cf451f5bf11cab283e5f12777
+  sha256: 7228e07d60460334b6f431f1739e07cc487b9d33901d363b2e0f1bd6653e767e
 
 build:
   # TODO: determine if we can use a newer OSX, or somehow push upstream on the missing pieces
   skip: true  # [osx]
-  number: 1
+  number: 0
 
 requirements:
   build:
@@ -88,8 +88,12 @@ about:
     - library_licenses/blake2b_simd-LICENSE  # [win]
     - library_licenses/bumpalo-LICENSE-APACHE  # [win]
     - library_licenses/bumpalo-LICENSE-MIT  # [win]
-    - library_licenses/cloudabi-LICENSE  # [win]
-    - library_licenses/fuchsia-cprng-LICENSE  # [win]
+    - library_licenses/cmake-LICENSE-APACHE  # [win]
+    - library_licenses/cmake-LICENSE-MIT  # [win]
+    - library_licenses/encoding_rs-LICENSE-APACHE  # [win]
+    - library_licenses/encoding_rs-LICENSE-MIT  # [win]
+    - library_licenses/flate2-LICENSE-APACHE  # [win]
+    - library_licenses/flate2-LICENSE-MIT  # [win]
     - library_licenses/hermit-abi-LICENSE-APACHE  # [win]
     - library_licenses/hermit-abi-LICENSE-MIT  # [win]
     - library_licenses/js-sys-LICENSE-APACHE  # [win]
@@ -98,32 +102,10 @@ about:
     - library_licenses/mach-LICENSE-MIT  # [win]
     - library_licenses/miow-LICENSE-APACHE  # [win]
     - library_licenses/miow-LICENSE-MIT  # [win]
-    - library_licenses/num-integer-LICENSE-APACHE  # [win]
-    - library_licenses/num-integer-LICENSE-MIT  # [win]
-    - library_licenses/num-iter-LICENSE-APACHE  # [win]
-    - library_licenses/num-iter-LICENSE-MIT  # [win]
-    - library_licenses/num-LICENSE-APACHE  # [win]
-    - library_licenses/num-LICENSE-MIT  # [win]
     - library_licenses/orbclient-LICENSE-MIT  # [win]
     - library_licenses/rand_hc-COPYRIGHT  # [win]
     - library_licenses/rand_hc-LICENSE-APACHE  # [win]
     - library_licenses/rand_hc-LICENSE-MIT  # [win]
-    - library_licenses/rand_isaac-COPYRIGHT  # [win]
-    - library_licenses/rand_isaac-LICENSE-APACHE  # [win]
-    - library_licenses/rand_isaac-LICENSE-MIT  # [win]
-    - library_licenses/rand_jitter-COPYRIGHT  # [win]
-    - library_licenses/rand_jitter-LICENSE-APACHE  # [win]
-    - library_licenses/rand_jitter-LICENSE-MIT  # [win]
-    - library_licenses/rand_os-COPYRIGHT  # [win]
-    - library_licenses/rand_os-LICENSE-APACHE  # [win]
-    - library_licenses/rand_os-LICENSE-MIT  # [win]
-    - library_licenses/rand_pcg-COPYRIGHT  # [win]
-    - library_licenses/rand_pcg-LICENSE-APACHE  # [win]
-    - library_licenses/rand_pcg-LICENSE-MIT  # [win]
-    - library_licenses/rand_xorshift-COPYRIGHT  # [win]
-    - library_licenses/rand_xorshift-LICENSE-APACHE  # [win]
-    - library_licenses/rand_xorshift-LICENSE-MIT  # [win]
-    - library_licenses/rdrand-LICENSE  # [win]
     - library_licenses/redox_syscall-LICENSE  # [win]
     - library_licenses/redox_users-LICENSE  # [win]
     - library_licenses/rust-argon2-LICENSE-APACHE  # [win]
@@ -132,6 +114,10 @@ about:
     - library_licenses/sdl2-sys-LICENSE  # [win]
     - library_licenses/socket2-LICENSE-APACHE  # [win]
     - library_licenses/socket2-LICENSE-MIT  # [win]
+    - library_licenses/tar-LICENSE-APACHE  # [win]
+    - library_licenses/tar-LICENSE-MIT  # [win]
+    - library_licenses/unidiff-LICENSE-MIT  # [win]
+    - library_licenses/version-compare-LICENSE-MIT  # [win]
     - library_licenses/wasi-LICENSE-APACHE  # [win]
     - library_licenses/wasi-LICENSE-MIT  # [win]
     - library_licenses/wasm-bindgen-backend-LICENSE-APACHE  # [win]
@@ -155,6 +141,8 @@ about:
     - library_licenses/winapi-util-UNLICENSE  # [win]
     - library_licenses/winapi-x86_64-pc-windows-gnu-LICENSE-APACHE  # [win]
     - library_licenses/winapi-x86_64-pc-windows-gnu-LICENSE-MIT  # [win]
+    - library_licenses/xattr-LICENSE-APACHE  # [win]
+    - library_licenses/xattr-LICENSE-MIT  # [win]
 
 
     - library_licenses/more-asserts-LICENSE-CC0
@@ -391,7 +379,6 @@ about:
     - library_licenses/rand-COPYRIGHT
     - library_licenses/rand-LICENSE-APACHE
     - library_licenses/rand-LICENSE-MIT
-    - library_licenses/raw-cpuid-LICENSE.md
     - library_licenses/raw-window-handle-LICENSE-APACHE.md
     - library_licenses/raw-window-handle-LICENSE-MIT.md
     - library_licenses/raw-window-handle-LICENSE-ZLIB.md
@@ -507,10 +494,10 @@ about:
     - library_licenses/walkdir-COPYING
     - library_licenses/walkdir-LICENSE-MIT
     - library_licenses/walkdir-UNLICENSE
-    - library_licenses/wasmer_enumset_derive-LICENSE-APACHE
-    - library_licenses/wasmer_enumset_derive-LICENSE-MIT
-    - library_licenses/wasmer_enumset-LICENSE-APACHE
-    - library_licenses/wasmer_enumset-LICENSE-MIT
+    - library_licenses/enumset_derive-LICENSE-APACHE
+    - library_licenses/enumset_derive-LICENSE-MIT
+    - library_licenses/enumset-LICENSE-APACHE
+    - library_licenses/enumset-LICENSE-MIT
     - library_licenses/wasmer-c-api-LICENSE
     - library_licenses/wasmer-cache-LICENSE
     - library_licenses/wasmer-cli-LICENSE
