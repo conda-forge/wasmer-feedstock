@@ -1,5 +1,5 @@
 {% set name = "wasmer" %}
-{% set version = "1.0.1" %}
+{% set version = "1.0.2" %}
 
 package:
   name: {{ name }}
@@ -7,12 +7,12 @@ package:
 
 source:
   url: https://github.com/wasmerio/{{ name }}/archive/{{ version }}.tar.gz
-  sha256: ca5ea30bfd0700b5f89dace19516991dbc9ef38cf451f5bf11cab283e5f12777
+  sha256: 7228e07d60460334b6f431f1739e07cc487b9d33901d363b2e0f1bd6653e767e
 
 build:
   # TODO: determine if we can use a newer OSX, or somehow push upstream on the missing pieces
   skip: true  # [osx]
-  number: 1
+  number: 0
 
 requirements:
   build:
