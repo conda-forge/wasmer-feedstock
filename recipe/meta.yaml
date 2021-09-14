@@ -12,7 +12,7 @@ source:
 build:
   # TODO: determine if we can use a newer OSX, or somehow push upstream on the missing pieces
   skip: true  # [osx]
-  number: 0
+  number: 1
 
 requirements:
   build:
