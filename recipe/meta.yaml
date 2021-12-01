@@ -36,7 +36,6 @@ requirements:
 
 test:
   source_files:
-    - wasmer-{{ version }}-cargo-dependencies.json
     - {{ test_wasm }}
   files:
     # TODO: we should probably generalize and package this as e.g.
@@ -44,9 +43,6 @@ test:
     - test_licenses.py
   requires:
     - m2-grep  # [win]
-    - pytest
-    - python >=3.6
-    - ruamel_yaml
   commands:
     - wasmer --version
     - wasmer --help
@@ -54,7 +50,6 @@ test:
     - wasmer validate {{ test_wasm }}
     - wasmer run {{ test_wasm }}
     - wasmer run {{ test_wasm }} | grep '{{ test_text }}'
-    - python test_licenses.py --ignore wasmer,wasmer-engine-dummy
     # TODO: enable C API, multiple outputs, use python testing infra, etc.
     # - mkdir .wsmr
     # {% for backend in ["singlepass", "cranelift", "llvm"] %}
