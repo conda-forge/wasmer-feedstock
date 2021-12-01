@@ -13,9 +13,16 @@ fi
 cd lib/cli
 
 # build statically linked binary with Rust
-cargo install --locked --root "$PREFIX" --path . --features "cranelift llvm singlepass"
+cargo install \
+  --locked \
+  --root "$PREFIX" \
+  --features "cranelift llvm singlepass" \
+  --jobs $CPU_COUNT \
+  --path .
 
-cargo-bundle-licenses --format yaml --output ${SRC_DIR}/THIRDPARTY.yml
+cargo-bundle-licenses \
+  --format yaml \
+  --output ${SRC_DIR}/THIRDPARTY.yml
 
 # remove extra build files
 rm -f "${PREFIX}/.crates2.json"

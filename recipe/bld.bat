@@ -5,7 +5,12 @@
 cd lib/cli
 
 :: build
-cargo install --root "%PREFIX%" --path . --features "cranelift llvm singlepass" || goto :error
+cargo install ^
+    --root "%PREFIX%" ^
+    --features "cranelift llvm singlepass" ^
+    --jobs %CPU_COUT%
+    --path . ^
+    || goto :error
 
 set WASMER_BIN=%PREFIX%\bin\wasmer.exe
 
@@ -15,7 +20,10 @@ md %SCRIPTS% || echo "%SCRIPTS% already exists"
 move %WASMER_BIN% %SCRIPTS% || goto :error
 
 :: dump licenses
-cargo-bundle-licenses --format yaml --output %SRC_DIR%\THIRDPARTY.yml
+cargo-bundle-licenses ^
+    --format yaml ^
+    --output %SRC_DIR%\THIRDPARTY.yml ^
+    || goto :error
 
 :: remove extra build files
 del /F /Q "%PREFIX%\.crates2.json"

@@ -1,12 +1,11 @@
-{% set name = "wasmer" %}
 {% set version = "2.1.0" %}
 
 package:
-  name: {{ name }}
+  name: wasmer
   version: {{ version }}
 
 source:
-  url: https://github.com/wasmerio/{{ name }}/archive/{{ version }}.tar.gz
+  url: https://github.com/wasmerio/wasmer/archive/{{ version }}.tar.gz
   sha256: 3d2d15bce1fc571f498000dcdab01695cc2a7994dbb9e8815d31ac21dda94fe3
 
 build:
@@ -20,7 +19,7 @@ requirements:
     - {{ compiler("cxx") }}
     - {{ compiler("rust") }}
     - cargo-bundle-licenses
-    - llvmdev >=10
+    - llvmdev >=11
   host:
     - libffi
     - openssl
@@ -37,7 +36,7 @@ requirements:
 
 test:
   source_files:
-    - {{ name }}-{{ version }}-cargo-dependencies.json
+    - wasmer-{{ version }}-cargo-dependencies.json
     - {{ test_wasm }}
   files:
     # TODO: we should probably generalize and package this as e.g.
