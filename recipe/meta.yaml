@@ -6,7 +6,7 @@ package:
 
 source:
   url: https://github.com/wasmerio/wasmer/archive/{{ version }}.tar.gz
-  sha256: 3d2d15bce1fc571f498000dcdab01695cc2a7994dbb9e8815d31ac21dda94fe3
+  sha256: 10f976eea614a7a958947a695d7f5f05040014688d8dcdc12261af98a4f3452e
 
 build:
   number: 0
@@ -17,8 +17,7 @@ requirements:
     - {{ compiler("cxx") }}
     - {{ compiler("rust") }}
     - cargo-bundle-licenses
-    - llvmdev >=11
-    - m2-make  # [win]
+    - llvmdev >=12
   host:
     - libffi
     - openssl
