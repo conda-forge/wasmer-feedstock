@@ -9,8 +9,6 @@ source:
   sha256: 3d2d15bce1fc571f498000dcdab01695cc2a7994dbb9e8815d31ac21dda94fe3
 
 build:
-  # TODO: determine if we can use a newer OSX, or somehow push upstream on the missing pieces
-  skip: true  # [osx]
   number: 0
 
 requirements:
