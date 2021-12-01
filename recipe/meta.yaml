@@ -17,7 +17,7 @@ requirements:
     - {{ compiler("cxx") }}
     - {{ compiler("rust") }}
     - cargo-bundle-licenses
-    - llvmdev >=12  # [not win]
+    - llvmdev >=12  # [linux]
   host:
     - libffi
     - openssl
