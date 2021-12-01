@@ -8,7 +8,7 @@ cd lib/cli
 cargo install ^
     --root "%PREFIX%" ^
     --features "cranelift llvm singlepass" ^
-    --jobs %CPU_COUT% ^
+    --jobs %CPU_COUNT% ^
     --path . ^
     || goto :error
 
