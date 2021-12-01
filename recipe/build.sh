@@ -3,6 +3,7 @@
 set -o xtrace -o nounset -o pipefail -o errexit
 
 export RUST_BACKTRACE=1
+export LLVM_SYS_110_PREFIX=$PREFIX
 
 if [ $(uname) = Darwin ] ; then
   export RUSTFLAGS="-C link-args=-Wl,-rpath,${PREFIX}/lib"
