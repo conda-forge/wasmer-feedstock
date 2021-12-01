@@ -10,17 +10,16 @@ else
   export RUSTFLAGS="-C link-arg=-Wl,-rpath-link,${PREFIX}/lib -L${PREFIX}/lib"
 fi
 
-# see https://github.com/wasmerio/wasmer/blob/master/PACKAGING.md
-export WASMER_INSTALL_PREFIX=$PREFIX
-export ENABLE_CRANELIFT=1
-export ENABLE_LLVM=1
-export ENABLE_SINGLEPASS=1
-export DESTDIR=$PREFIX
+cd lib/cli
 
-make
-make install
+# build statically linked binary with Rust
+cargo install \
+  --locked \
+  --root "$PREFIX" \
+  --features "cranelift llvm singlepass" \
+  --jobs $CPU_COUNT \
+  --path .
 
-# dump licenses
 cargo-bundle-licenses \
   --format yaml \
   --output ${SRC_DIR}/THIRDPARTY.yml
