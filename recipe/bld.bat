@@ -2,22 +2,24 @@
 :: https://github.com/conda-forge/py-spy-feedstock/blob/master/recipe/bld.bat
 @echo on
 
-cd lib/cli
+:: see https://github.com/wasmerio/wasmer/blob/master/PACKAGING.md
+set WASMER_INSTALL_PREFIX=%PREFIX%
+set ENABLE_CRANELIFT=1
+set ENABLE_LLVM=1
+set ENABLE_SINGLEPASS=1
+set DESTDIR=%PREFIX%
 
 :: build
-cargo install ^
-    --root "%PREFIX%" ^
-    --features "cranelift llvm singlepass" ^
-    --jobs %CPU_COUT%
-    --path . ^
-    || goto :error
+make || goto :error
+make install || goto :error
 
-set WASMER_BIN=%PREFIX%\bin\wasmer.exe
-
-:: move to scripts
-dir %WASMER_BIN%
-md %SCRIPTS% || echo "%SCRIPTS% already exists"
-move %WASMER_BIN% %SCRIPTS% || goto :error
+:: make script wrapper?
+:: set WASMER_BIN=%PREFIX%\bin\wasmer.exe
+::
+:: :: move to scripts
+:: dir %WASMER_BIN%
+:: md %SCRIPTS% || echo "%SCRIPTS% already exists"
+:: move %WASMER_BIN% %SCRIPTS% || goto :error
 
 :: dump licenses
 cargo-bundle-licenses ^
