@@ -37,18 +37,18 @@ test:
     - m2-grep  # [win]
   commands:
     - wasmer --version
+    - wasmer --version | grep -ie '{{ version.replace(".", "\\.") }}'
     - wasmer --help
-    - wasmer validate {{ test_wasm }}
-    - wasmer run {{ test_wasm }}
-    - wasmer run {{ test_wasm }} | grep '{{ test_text }}'
     {% for backend in backends %}
-    - echo "=========== {{ backend }} ==========="
     - wasmer run --{{ backend }} {{ test_wasm }}
     - wasmer run --{{ backend }} {{ test_wasm }} | grep '{{ test_text }}'
-    - WASMER_DIR=$PREFIX wasmer create-exe --{{ backend }} {{ test_wasm }} -o ./hello-{{ backend }}
-    - ls -lathr hello-{{ backend }}
-    - ./hello-{{ backend }}
-    - ./hello-{{ backend }} | grep '{{ test_text }}'
+    - wasmer validate --{{ backend }} {{ test_wasm }}
+    # TODO: test engines?
+    # TODO: test compile?
+    # TODO: test exe?
+    # - WASMER_DIR=$PREFIX wasmer create-exe --{{ backend }} {{ test_wasm }} -o ./hello-{{ backend }}
+    # - ./hello-{{ backend }}
+    # - ./hello-{{ backend }} | grep '{{ test_text }}'
     {% endfor %}
 
 about:
