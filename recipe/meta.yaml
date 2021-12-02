@@ -17,6 +17,7 @@ requirements:
     - {{ compiler("cxx") }}
     - {{ compiler("rust") }}
     - cargo-bundle-licenses
+    # TODO: investigate for osx?
     - llvmdev >=12  # [linux]
   host:
     - libffi
@@ -24,40 +25,31 @@ requirements:
     - zlib
   run: []
 
-# TODO: Also Included in the 1.0.1 release is an experimental, minified version
-#       of wasmer called wasmer-headless that can only run precompiled Wasm modules.
-# outputs:
-
-# TODO: ideally have some "canonical" WASM to run...
 {% set test_wasm = "tests/wasi-wast/wasi/snapshot1/hello.wasm" %}
 {% set test_text = "Hello, world!" %}
+{% set backends = ["singlepass", "cranelift"] %}
+{% set backends = backends + ["llvm"] %}  # [linux]
 
 test:
   source_files:
     - {{ test_wasm }}
-  files:
-    # TODO: we should probably generalize and package this as e.g.
-    #       pytest-(conda-)cargo-liceneses, once we get cargo-licenses built
-    - test_licenses.py
   requires:
     - m2-grep  # [win]
   commands:
     - wasmer --version
     - wasmer --help
-    # TODO: remove jinja templates
     - wasmer validate {{ test_wasm }}
     - wasmer run {{ test_wasm }}
     - wasmer run {{ test_wasm }} | grep '{{ test_text }}'
-    # TODO: enable C API, multiple outputs, use python testing infra, etc.
-    # - mkdir .wsmr
-    # {% for backend in ["singlepass", "cranelift", "llvm"] %}
-    # - wasmer run --{{ backend }} {{ test_wasm }}
-    # - wasmer run --{{ backend }} {{ test_wasm }} | grep '{{ test_text }}'
-    # - WASMER_DIR=$PREFIX wasmer create-exe --{{ backend }} {{ test_wasm }} -o ./hello-{{ backend }}
-    # - ls -lathr hello-{{ backend }}
-    # - ./hello-{{ backend }}
-    # - ./hello-{{ backend }} | grep '{{ test_text }}'
-    # {% endfor %}
+    {% for backend in backends %}
+    - echo "=========== {{ backend }} ==========="
+    - wasmer run --{{ backend }} {{ test_wasm }}
+    - wasmer run --{{ backend }} {{ test_wasm }} | grep '{{ test_text }}'
+    - WASMER_DIR=$PREFIX wasmer create-exe --{{ backend }} {{ test_wasm }} -o ./hello-{{ backend }}
+    - ls -lathr hello-{{ backend }}
+    - ./hello-{{ backend }}
+    - ./hello-{{ backend }} | grep '{{ test_text }}'
+    {% endfor %}
 
 about:
   home: https://wasmer.io
