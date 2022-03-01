@@ -21,6 +21,7 @@ requirements:
     - llvmdev >=12  # [linux]
   host:
     - libffi
+    - libxkbcommon  # [linux]
     - openssl
     - zlib
   run: []
