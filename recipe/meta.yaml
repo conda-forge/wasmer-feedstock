@@ -1,4 +1,4 @@
-{% set version = "2.1.1" %}
+{% set version = "2.2.0" %}
 
 package:
   name: wasmer
@@ -6,7 +6,7 @@ package:
 
 source:
   url: https://github.com/wasmerio/wasmer/archive/{{ version }}.tar.gz
-  sha256: f2ca1f3c48983de854b01c87b521e02245654f235d48d339a0e25229e184a322
+  sha256: 86d742a59025c4fe49838e8fb98aec754315cb9e0710c1b793e16f8caa566cfb
 
 build:
   number: 0
@@ -21,6 +21,7 @@ requirements:
     - llvmdev >=12  # [linux]
   host:
     - libffi
+    - libxkbcommon  # [linux]
     - openssl
     - zlib
   run: []
