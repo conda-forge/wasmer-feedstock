@@ -19,6 +19,7 @@ requirements:
     - cargo-bundle-licenses
     # TODO: investigate for osx?
     - llvmdev >=12  # [linux]
+    - pkg-config  # [linux]
   host:
     - libffi
     - libxkbcommon  # [linux]
