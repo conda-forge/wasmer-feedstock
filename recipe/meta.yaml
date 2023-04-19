@@ -18,7 +18,7 @@ requirements:
     - {{ compiler("rust") }}
     - cargo-bundle-licenses
     # TODO: investigate for osx?
-    - llvmdev >=12,<14  # [linux]
+    - llvmdev >=14,<15  # [linux]
     - llvm-tools  # [linux]
     - pkg-config  # [linux]
   host:
