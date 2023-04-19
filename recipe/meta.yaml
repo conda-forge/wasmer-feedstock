@@ -1,4 +1,4 @@
-{% set version = "3.1.0" %}
+{% set version = "3.2.0" %}
 
 package:
   name: wasmer
@@ -6,7 +6,7 @@ package:
 
 source:
   url: https://github.com/wasmerio/wasmer/archive/v{{ version }}.tar.gz
-  sha256: d3a27e5fd834573a226374e0c5ed8891af9fab41749efa2aecbd3d22c3f950a2
+  sha256: 50bccd4e3155bee881fb165ceea82234c730a79f2345988b757596dbe20e912b
 
 build:
   number: 0
@@ -18,7 +18,7 @@ requirements:
     - {{ compiler("rust") }}
     - cargo-bundle-licenses
     # TODO: investigate for osx?
-    - llvmdev >=12,<14  # [linux]
+    - llvmdev >=14,<15  # [linux]
     - llvm-tools  # [linux]
     - pkg-config  # [linux]
   host:
