@@ -1,4 +1,4 @@
-{% set version = "4.2.0" %}
+{% set version = "4.2.1" %}
 
 package:
   name: wasmer
@@ -6,7 +6,7 @@ package:
 
 source:
   url: https://github.com/wasmerio/wasmer/archive/v{{ version }}.tar.gz
-  sha256: 5a87a2bbf5011991d6179bf6a7f9562d90d21937d2527dcb153ab40b9929b213
+  sha256: 46ee02b24b1c27e285ec54e3a828ad645b9e64e7eb1512b6aaf67185c98d4355
 
 build:
   number: 0
