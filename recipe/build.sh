@@ -4,6 +4,7 @@ set -o xtrace -o nounset -o pipefail -o errexit
 
 export RUST_BACKTRACE=1
 export LLVM_SYS_110_PREFIX=$PREFIX
+export LLVM_SYS_150_PREFIX=$PREFIX
 
 export FEATURES="cranelift singlepass"
 

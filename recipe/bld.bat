@@ -3,6 +3,7 @@
 @echo on
 
 set LLVM_SYS_110_PREFIX=%PREFIX%
+set LLVM_SYS_150_PREFIX=%PREFIX%
 
 cd lib/cli
 
