@@ -26,7 +26,9 @@ requirements:
     - libxkbcommon  # [linux]
     - openssl
     - zlib
-  run: []
+    - zstd  # [linux]
+  run:
+    - zstd  # [linux]
 
 {% set test_wasm = "tests/wasi-wast/wasi/snapshot1/hello.wasm" %}
 {% set test_text = "Hello, world!" %}
