@@ -1,4 +1,4 @@
-{% set version = "4.3.1" %}
+{% set version = "4.3.2" %}
 
 package:
   name: wasmer
@@ -6,7 +6,7 @@ package:
 
 source:
   url: https://github.com/wasmerio/wasmer/archive/v{{ version }}.tar.gz
-  sha256: aa8a47775845bd39da2e5a044d4b88e2d8d1b807137f5617dc6bcc9906ebff3d
+  sha256: 7842ee0d9253c12785b5f59e6fc41b42956e1c1469478d1e12960906e9e1ccca
 
 build:
   number: 0
@@ -70,7 +70,7 @@ about:
   doc_source_url: https://github.com/wasmerio/docs.wasmer.io
   license_file:
     - LICENSE
-    - ATTRIBUTIONS.md
+    - docs/ATTRIBUTIONS.md
     - THIRDPARTY.yml
 
 extra:
