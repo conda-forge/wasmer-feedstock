@@ -70,7 +70,7 @@ about:
   doc_source_url: https://github.com/wasmerio/docs.wasmer.io
   license_file:
     - LICENSE
-    - ATTRIBUTIONS.md
+    - docs/ATTRIBUTIONS.md
     - THIRDPARTY.yml
 
 extra:
