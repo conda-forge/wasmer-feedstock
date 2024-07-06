@@ -7,18 +7,22 @@ export LLVM_SYS_110_PREFIX=$PREFIX
 
 export FEATURES="cranelift singlepass"
 
-export MAKE_OPTS="ENABLE_CRANELIFT=1 WASMER_INSTALL_PREFIX=${PREFIX}"
-
 if [ $(uname) = Darwin ] ; then
   export RUSTFLAGS="-C link-args=-Wl,-rpath,${PREFIX}/lib"
-  export MAKE_OPTS="$MAKE_OPTS ENABLE_LLVM=0"
 else
+  export FEATURES="$FEATURES llvm"
   export RUSTFLAGS="-C link-arg=-Wl,-rpath-link,${PREFIX}/lib -L${PREFIX}/lib"
-  export MAKE_OPTS="$MAKE_OPTS ENABLE_LLVM=1"
 fi
 
+cd lib/cli
+
 # build statically linked binary with Rust
-make $MAKE_OPTS
+cargo install \
+  --locked \
+  --root "$PREFIX" \
+  --features "$FEATURES" \
+  --jobs "$CPU_COUNT" \
+  --path .
 
 cargo-bundle-licenses \
   --format yaml \
