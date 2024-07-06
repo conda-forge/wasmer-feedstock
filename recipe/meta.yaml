@@ -22,6 +22,10 @@ requirements:
     - llvmdev >=15,<16  # [linux]
     - llvm-tools  # [linux]
     - pkg-config  # [linux]
+    - make  # [unix]
+    - cmake  # [unix]
+    - m2-make  # [win]
+    - m2-cmake  # [win]
   host:
     - libffi
     - libxkbcommon  # [linux]
