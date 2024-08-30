@@ -27,7 +27,7 @@ openssl:
 rust_compiler:
 - rust
 rust_compiler_version:
-- '1.79'
+- '1.74'
 target_platform:
 - osx-64
 zip_keys:
