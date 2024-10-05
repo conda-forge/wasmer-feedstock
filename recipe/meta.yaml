@@ -6,10 +6,10 @@ package:
 
 source:
   url: https://github.com/wasmerio/wasmer/archive/v{{ version }}.tar.gz
-  sha256: d53c0ff4d4f1a7a7b28659922bae3f51fa0cd41ce2cb4a59a469392bbe5c30af
+  sha256: c6af8119593be975000ebb322c666677579bd39748f5b63592785c1b0628ec86
 
 build:
-  number: 0
+  number: 1
 
 requirements:
   build:
