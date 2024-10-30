@@ -2,8 +2,6 @@
 :: https://github.com/conda-forge/py-spy-feedstock/blob/master/recipe/bld.bat
 @echo on
 
-set LLVM_SYS_110_PREFIX=%PREFIX%
-
 cd lib/cli
 
 :: build

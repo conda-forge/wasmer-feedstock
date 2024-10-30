@@ -14,14 +14,14 @@ build:
 requirements:
   build:
     - {{ compiler("c") }}
-    - {{ stdlib("c") }}
     - {{ compiler("cxx") }}
     - {{ compiler("rust") }}
+    - {{ stdlib("c") }}
     - cargo-bundle-licenses
     # TODO: investigate for osx?
-    - llvmdev >=19,<20  # [linux]
-    - llvm-tools        # [linux]
-    - pkg-config        # [linux]
+    - llvmdev       # [linux]
+    - llvm-tools    # [linux]
+    - pkg-config    # [linux]
   host:
     - libffi
     - libxkbcommon  # [linux]
