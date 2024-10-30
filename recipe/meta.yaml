@@ -19,9 +19,9 @@ requirements:
     - {{ compiler("rust") }}
     - cargo-bundle-licenses
     # TODO: investigate for osx?
-    - llvmdev >=15,<16  # [linux]
-    - llvm-tools  # [linux]
-    - pkg-config  # [linux]
+    - llvmdev >=19,<20  # [linux]
+    - llvm-tools        # [linux]
+    - pkg-config        # [linux]
   host:
     - libffi
     - libxkbcommon  # [linux]
