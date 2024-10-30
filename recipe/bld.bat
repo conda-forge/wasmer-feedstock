@@ -6,6 +6,7 @@ cd lib/cli
 
 :: build
 cargo install ^
+    --locked ^
     --root "%PREFIX%" ^
     --features "cranelift singlepass" ^
     --jobs %CPU_COUNT% ^
