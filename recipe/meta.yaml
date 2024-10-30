@@ -17,7 +17,6 @@ requirements:
     - {{ stdlib("c") }}
     - {{ compiler("cxx") }}
     - {{ compiler("rust") }}
-    - rust ==1.74.*  # [linux]
     - cargo-bundle-licenses
     # TODO: investigate for osx?
     - llvmdev >=15,<16  # [linux]
