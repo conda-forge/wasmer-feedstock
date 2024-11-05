@@ -1,2 +1,5 @@
 llvm:     # [linux]
   - "18"  # [linux]
+
+llvmdev:  # [linux]
+  - "18"  # [linux]
