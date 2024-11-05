@@ -3,13 +3,14 @@
 set -o xtrace -o nounset -o pipefail -o errexit
 
 export RUST_BACKTRACE=1
-export LLVM_SYS_110_PREFIX=$PREFIX
 
 export FEATURES="cranelift singlepass"
 
 if [ $(uname) = Darwin ] ; then
   export RUSTFLAGS="-C link-args=-Wl,-rpath,${PREFIX}/lib"
 else
+  export LLVM_ENABLE=1
+  export LLVM_SYS_180_PREFIX=$PREFIX
   export FEATURES="$FEATURES llvm"
   export RUSTFLAGS="-C link-arg=-Wl,-rpath-link,${PREFIX}/lib -L${PREFIX}/lib"
 fi
