@@ -20,7 +20,7 @@ docker_image:
 - quay.io/condaforge/linux-anvil-cos7-x86_64
 libffi:
 - '3.4'
-llvm:
+llvmdev:
 - '18'
 openssl:
 - '3'
