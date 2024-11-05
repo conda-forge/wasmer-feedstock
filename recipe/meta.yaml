@@ -18,18 +18,17 @@ requirements:
     - {{ compiler("rust") }}
     - {{ stdlib("c") }}
     - cargo-bundle-licenses
-    # TODO: investigate for osx?
-    - llvmdev       # [linux]
-    - llvm-tools    # [linux]
     - pkg-config    # [linux]
   host:
     - libffi
-    - libxkbcommon  # [linux]
     - openssl
     - zlib
-    - zstd  # [linux]
+    - libxkbcommon  # [linux]
+    - llvm-tools    # [linux]
+    - llvmdev       # [linux]
+    - zstd          # [linux]
   run:
-    - zstd  # [linux]
+    - zstd          # [linux]
 
 {% set test_wasm = "tests/wasi-wast/wasi/snapshot1/hello.wasm" %}
 {% set test_text = "Hello, world!" %}
