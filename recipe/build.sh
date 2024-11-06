@@ -7,12 +7,10 @@ export RUST_BACKTRACE=1
 export FEATURES="cranelift singlepass"
 
 if [[ "$(uname)" == "Darwin" ]]; then
-  export RUSTFLAGS="-C link-args=-Wl,-rpath,${PREFIX}/lib"
   # Fix headerpad-max-install-error
   # install_name_tool: changing install names or rpaths can't be redone for
   #  (for architecture x86_64) because larger updated load commands do not fit (the program must be relinked, and you may need to use -headerpad or -headerpad_max_install_names)
-  export SONAME="-Wl,-install_name,@rpath/"
-  export LDFLAGS="${LDFLAGS} -headerpad_max_install_names"
+  export RUSTFLAGS="-C link-args=-Wl,-rpath,${PREFIX}/lib,-headerpad_max_install_names"
 else
   export LLVM_ENABLE=1
   export LLVM_SYS_180_PREFIX=$PREFIX
