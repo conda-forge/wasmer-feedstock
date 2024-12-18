@@ -32,7 +32,7 @@ requirements:
 
 test:
   source_files:
-    - {{ test_wasm }}
+    - tests/wasi-wast/wasi/snapshot1/hello.wasm
   requires:
     - pytest
     - m2-grep  # [win]
