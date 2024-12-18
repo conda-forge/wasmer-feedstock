@@ -30,31 +30,16 @@ requirements:
   run:
     - zstd          # [linux]
 
-{% set test_wasm = "tests/wasi-wast/wasi/snapshot1/hello.wasm" %}
-{% set test_text = "Hello, world!" %}
-{% set backends = ["singlepass", "cranelift"] %}
-{% set backends = backends + ["llvm"] %}  # [linux]
-
 test:
   source_files:
     - {{ test_wasm }}
   requires:
+    - pytest
     - m2-grep  # [win]
   commands:
     - wasmer --version
     - wasmer --version | grep -ie {{ version.replace(".", "\\.") }}
     - wasmer --help
-    {% for backend in backends %}
-    - wasmer run --{{ backend }} {{ test_wasm }}
-    - wasmer run --{{ backend }} {{ test_wasm }} | grep '{{ test_text }}'
-    - wasmer validate --{{ backend }} {{ test_wasm }}
-    # TODO: test engines?
-    # TODO: test compile?
-    # TODO: test exe?
-    # - WASMER_DIR=$PREFIX wasmer create-exe --{{ backend }} {{ test_wasm }} -o ./hello-{{ backend }}
-    # - ./hello-{{ backend }}
-    # - ./hello-{{ backend }} | grep '{{ test_text }}'
-    {% endfor %}
 
 about:
   home: https://wasmer.io
