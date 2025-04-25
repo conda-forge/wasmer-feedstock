@@ -45,7 +45,7 @@ requirements:
 tests:
   - files:
       recipe:
-        - run-test.py
+        - run_test.py
       source:
         - tests/wasi-wast/wasi/snapshot1/hello.wasm
     requirements:
