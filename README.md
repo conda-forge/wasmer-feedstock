@@ -3,7 +3,7 @@ About wasmer-feedstock
 
 Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/wasmer-feedstock/blob/main/LICENSE.txt)
 
-Home: https://wasmer.io
+Home: https://wasmer.io/
 
 Package license: MIT
 
@@ -11,11 +11,10 @@ Summary: Universal WebAssembly runtime
 
 Development: https://github.com/wasmerio/wasmer
 
-Documentation: https://docs.wasmer.io
+Documentation: https://docs.wasmer.io/
 
 Wasmer is a standalone JIT WebAssembly runtime, aiming to be fully
 compatible with WASI and Emscripten.
-
 
 Current build status
 ====================

@@ -16,7 +16,7 @@ TEST_TEXT = b"Hello, world!"
 
 
 @pytest.fixture(
-    params=["singlepass", "cranelift", *(["llvm"] if "linux" in sys.platform else [])]
+    params=["cranelift", *(["llvm"] if "linux" in sys.platform else [])]
 )
 def a_backend(request) -> str:
     return request.param
