@@ -34,6 +34,7 @@ requirements:
     - if: linux
       then:
         - libxkbcommon
+        - libxml2
         - llvm-tools
         - llvmdev
         - zstd
