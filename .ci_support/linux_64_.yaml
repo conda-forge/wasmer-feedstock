@@ -17,13 +17,13 @@ cxx_compiler_version:
 docker_image:
 - quay.io/condaforge/linux-anvil-x86_64:alma9
 libffi:
-- '3.4'
+- '3.5'
 libxml2_devel:
 - '2.14'
 llvmdev:
 - '18'
 openssl:
-- '3'
+- '3.5'
 rust_compiler:
 - rust
 target_platform:
