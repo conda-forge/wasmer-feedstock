@@ -13,7 +13,7 @@ source:
   sha256: 7bccb5b86724ea35ca9373fb81092080a615c1baa6129a8eeee9ed3e3f74b9b1
 
 build:
-  number: 1
+  number: 2
   script:
     file: build-wasmer
 
