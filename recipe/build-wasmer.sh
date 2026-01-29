@@ -9,13 +9,19 @@ export RUST_BACKTRACE=1
 export FEATURES="cranelift singlepass"
 
 if [[ "${_UNAME}" == "Darwin" ]]; then
-  # Fix headerpad-max-install-error
-  # install_name_tool: changing install names or rpaths can't be redone for
-  #  (for architecture x86_64) because larger updated load commands do not fit (the program must be relinked, and you may need to use -headerpad or -headerpad_max_install_names)
+  # Fix headerpad-max-install-error:
+  #   install_name_tool: changing install names or rpaths can't be redone for
+  #   (for architecture x86_64) because larger updated load commands do not fit
+  #   (the program must be relinked, and you may need to use -headerpad or
+  #   -headerpad_max_install_names)
   export RUSTFLAGS="-C link-args=-Wl,-rpath,${PREFIX}/lib,-headerpad_max_install_names"
 else
+  # keep aligned with `conda_build_config.yaml`: logs will generally tell what
+  # LLVM_SYS_XXX_PREFIX is needed, e.g.
+  #   error: No suitable version of LLVM was found system-wide or pointed to by
+  #   LLVM_SYS_211_PREFIX.
+  export LLVM_SYS_211_PREFIX="${PREFIX}"
   export LLVM_ENABLE=1
-  export LLVM_SYS_180_PREFIX="${PREFIX}"
   export FEATURES="${FEATURES} llvm"
   export RUSTFLAGS="-C link-arg=-Wl,-rpath-link,${PREFIX}/lib -L${PREFIX}/lib"
 fi

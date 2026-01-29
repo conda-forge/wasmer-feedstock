@@ -1,2 +1,3 @@
+# keep aligned with `LLVM_SYS_211_PREFIX` in `build-wasmer.sh`
 llvmdev:  # [linux]
-  - "18"  # [linux]
+  - "21"  # [linux]
