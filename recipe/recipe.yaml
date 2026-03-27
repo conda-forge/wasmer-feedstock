@@ -2,15 +2,15 @@
 schema_version: 1
 
 context:
-  version: "7.0.1"
+  version: "7.1.0"
 
 package:
   name: wasmer
   version: ${{ version }}
 
 source:
-  url: https://github.com/wasmerio/wasmer/archive/v${{ version }}.tar.gz
-  sha256: 1cd67765b834dd509d29fd7420819af37af852b877bc32b31c07bf92d27ffd31
+  url: https://github.com/wasmerio/wasmer/releases/download/v${{ version }}/wasmer-full-source.tar.xz
+  sha256: 4a4374e84f55758de2f8b57b3f5a88015d5f9341b6417601c372138ab90f9fa4
 
 build:
   number: 0
@@ -24,9 +24,7 @@ requirements:
     - ${{ compiler("rust") }}
     - ${{ stdlib("c") }}
     - cargo-bundle-licenses
-    - if: linux
-      then:
-        - pkg-config
+    - pkg-config
   host:
     - libffi
     - openssl
@@ -69,8 +67,12 @@ about:
     compatible with WASI and Emscripten.
   license_file:
     - LICENSE
-    - docs/ATTRIBUTIONS.md
-    - THIRDPARTY.yml
+    - lib/c-api/tests/wasm-c-api/LICENSE
+    - lib/compiler-llvm/LICENSE
+    - lib/compiler-singlepass/LICENSE
+    - lib/config/LICENSE
+    - tests/wasi-fyi/LICENSE
+    - tests/wast/spec/LICENSE
   homepage: https://wasmer.io
   repository: https://github.com/wasmerio/wasmer
   documentation: https://docs.wasmer.io
