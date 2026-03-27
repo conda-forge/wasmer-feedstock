@@ -2,7 +2,7 @@
 schema_version: 1
 
 context:
-  version: "7.0.1"
+  version: "7.1.0"
 
 package:
   name: wasmer
@@ -10,7 +10,7 @@ package:
 
 source:
   url: https://github.com/wasmerio/wasmer/archive/v${{ version }}.tar.gz
-  sha256: 1cd67765b834dd509d29fd7420819af37af852b877bc32b31c07bf92d27ffd31
+  sha256: 8c7c383db5141745ba4af85d718224f8c6c7551531567cc657cb516a2a62c734
 
 build:
   number: 0
