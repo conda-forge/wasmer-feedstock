@@ -24,9 +24,7 @@ requirements:
     - ${{ compiler("rust") }}
     - ${{ stdlib("c") }}
     - cargo-bundle-licenses
-    - if: linux
-      then:
-        - pkg-config
+    - pkg-config
   host:
     - libffi
     - openssl
