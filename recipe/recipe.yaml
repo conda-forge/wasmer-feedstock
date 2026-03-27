@@ -9,14 +9,9 @@ package:
   version: ${{ version }}
 
 source:
-  - url: https://github.com/wasmerio/wasmer/archive/refs/tags/v${{ version }}.tar.gz
-    sha256: 8c7c383db5141745ba4af85d718224f8c6c7551531567cc657cb516a2a62c734
-  - target_directory: lib/napi  # (heads/main)
-    url: https://github.com/wasmerio/napi/archive/9d2dae0ea425788dfa7c5a31d184686d616235bb.tar.gz
-    sha256: 3901b54b5a7901bae20ed121a0224618d40c1b47d79580a2b5620997c20159b4
-  - target_directory: tests/wast/spec  # (7e0b83a)
-    url: https://github.com/WebAssembly/testsuite/archive/7e0b83aba9dbbb6e0623c9334b0f73b3bb584b90.tar.gz
-    sha256: 24b42135bf95cc1c2f4afd30b6f3f718116b921e4a0f4c76ace605e3883c134d
+  url: https://github.com/wasmerio/wasmer/releases/download/v${{ version }}/wasmer-full-source.tar.xz
+  sha256: 4a4374e84f55758de2f8b57b3f5a88015d5f9341b6417601c372138ab90f9fa4
+
 build:
   number: 0
   script:
