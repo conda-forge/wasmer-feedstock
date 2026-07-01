@@ -6,7 +6,9 @@ _UNAME=$(uname)
 
 export RUST_BACKTRACE=1
 
-export FEATURES="cranelift singlepass"
+# see Makefil around:
+#   build_compiler_features = --feature
+export FEATURES="${DEFAULT_FEATURES}"
 
 if [[ "${_UNAME}" == "Darwin" ]]; then
   # Fix headerpad-max-install-error:
@@ -22,7 +24,7 @@ else
   #   LLVM_SYS_221_PREFIX.
   export LLVM_SYS_221_PREFIX="${PREFIX}"
   export LLVM_ENABLE=1
-  export FEATURES="${FEATURES} llvm"
+  export FEATURES="llvm,${FEATURES}"
   export RUSTFLAGS="-C link-arg=-Wl,-rpath-link,${PREFIX}/lib -L${PREFIX}/lib"
 fi
 

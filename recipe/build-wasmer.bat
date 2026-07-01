@@ -9,7 +9,7 @@ cargo auditable install ^
     --locked ^
     --no-track ^
     --root "%PREFIX%" ^
-    --features "cranelift singlepass" ^
+    --features "%DEFAULT_FEATURES%" ^
     --jobs %CPU_COUNT% ^
     --path . ^
     || goto :error
