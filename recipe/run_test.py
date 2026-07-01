@@ -5,6 +5,7 @@
 # - ./hello-{{ backend }}
 # - ./hello-{{ backend }} | grep '{{ test_text }}'
 
+import os
 import sys
 from subprocess import check_output, call
 
@@ -30,6 +31,11 @@ def test_wasmer_run(a_backend: str) -> None:
 def test_wasmer_validate(a_backend: str) -> None:
     rc = call(["wasmer", "validate", f"--{a_backend}", TEST_WASM])
     assert not rc
+
+
+def test_wasmer_version() -> None:
+    result = check_output(["wasmer", "--version"], encoding="utf-8")
+    assert os.environ["PKG_VERSION"] in result
 
 
 if __name__ == "__main__":

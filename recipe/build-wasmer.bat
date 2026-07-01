@@ -5,7 +5,7 @@
 cd lib/cli
 
 :: build
-cargo install ^
+cargo auditable install ^
     --locked ^
     --no-track ^
     --root "%PREFIX%" ^

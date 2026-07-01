@@ -24,6 +24,7 @@ requirements:
     - ${{ compiler("rust") }}
     - ${{ stdlib("c") }}
     - cargo-bundle-licenses
+    - cargo-auditable
     - pkg-config
   host:
     - libffi
@@ -50,12 +51,8 @@ tests:
     requirements:
       run:
         - pytest
-        - if: win
-          then:
-            - m2-grep
     script:
       - wasmer --version
-      - wasmer --version | grep -ie "${{ version | replace(".", "\\.") }}"
       - wasmer --help
       - python run_test.py
 
@@ -67,12 +64,7 @@ about:
     compatible with WASI and Emscripten.
   license_file:
     - LICENSE
-    - lib/c-api/tests/wasm-c-api/LICENSE
-    - lib/compiler-llvm/LICENSE
-    - lib/compiler-singlepass/LICENSE
-    - lib/config/LICENSE
-    - tests/wasi-fyi/LICENSE
-    - tests/wast/spec/LICENSE
+    - THIRDPARTY.yml
   homepage: https://wasmer.io
   repository: https://github.com/wasmerio/wasmer
   documentation: https://docs.wasmer.io
