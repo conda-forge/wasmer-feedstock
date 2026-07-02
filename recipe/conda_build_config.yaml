@@ -1,7 +1,3 @@
-# keep aligned with `LLVM_SYS_211_PREFIX` in `build-wasmer.sh`
+# keep aligned with `LLVM_SYS_221_PREFIX` in `build-wasmer.sh`
 llvmdev:  # [linux]
   - "22"  # [linux]
-rust_compiler_version:
-  - "1.94"
-c_stdlib_version: # [osx and arm64]
-  - "12.0"        # [osx and arm64]
