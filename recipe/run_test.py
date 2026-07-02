@@ -12,7 +12,7 @@ from subprocess import check_output, call
 import pytest
 
 IS_LINUX = "linux" in sys.platform
-COWAY_WASM = os.environ["COWAY_WASM"]
+COWSAY_WASM = os.environ["COWSAY_WASM"]
 TEST_TEXT = "{PKG_NAME} {PKG_VERSION}".format(**os.environ)
 
 
@@ -24,14 +24,14 @@ def a_backend(request) -> str:
 
 
 def test_wasmer_run(a_backend: str) -> None:
-    args = ["wasmer", "run", f"--{a_backend}", COWAY_WASM, TEST_TEXT]
+    args = ["wasmer", "run", f"--{a_backend}", COWSAY_WASM, TEST_TEXT]
     result = check_output(args, encoding="utf-8")
     print(result)
     assert TEST_TEXT in result
 
 
 def test_wasmer_validate(a_backend: str) -> None:
-    rc = call(["wasmer", "validate", f"--{a_backend}", COWAY_WASM])
+    rc = call(["wasmer", "validate", f"--{a_backend}", COWSAY_WASM])
     assert not rc
 
 

@@ -56,7 +56,7 @@ tests:
         - pytest
     script:
       env:
-        COWAY_WASM: ${{ cowsay_wasm }}
+        COWSAY_WASM: ${{ cowsay_wasm }}
       content:
         - wasmer --version
         - wasmer --help
