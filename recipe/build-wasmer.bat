@@ -9,7 +9,7 @@ cargo install ^
     --locked ^
     --no-track ^
     --root "%PREFIX%" ^
-    --features "cranelift singlepass" ^
+    --features "%DEFAULT_FEATURES%" ^
     --jobs %CPU_COUNT% ^
     --path . ^
     || goto :error
@@ -27,12 +27,8 @@ cargo-bundle-licenses ^
     --output %SRC_DIR%\THIRDPARTY.yml ^
     || goto :error
 
-:: remove extra build files
-del /F /Q "%PREFIX%\.crates2.json"
-del /F /Q "%PREFIX%\.crates.toml"
-
 goto :EOF
 
 :error
-echo Failed with error #%errorlevel%.
-exit /b %errorlevel%
+    echo Failed with error #%errorlevel%.
+    exit /b %errorlevel%

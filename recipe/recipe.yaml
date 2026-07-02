@@ -2,19 +2,23 @@
 schema_version: 1
 
 context:
-  version: "7.1.0"
+  version: "7.2.0"
+  cowsay_wasm: wasmer-test-files/integration/wasm/cowsay.wasm
 
 package:
   name: wasmer
   version: ${{ version }}
 
 source:
-  url: https://github.com/wasmerio/wasmer/releases/download/v${{ version }}/wasmer-full-source.tar.xz
-  sha256: 4a4374e84f55758de2f8b57b3f5a88015d5f9341b6417601c372138ab90f9fa4
+  url: https://github.com/wasmerio/wasmer/releases/download/v${{ version }}/wasmer-full-source.tar.gz
+  sha256: 9fa9150fc939b1b1636ed19cfd0b345be09082a8ae1ac6ce96061dec2effb574
 
 build:
   number: 0
   script:
+    env:
+      DEFAULT_FEATURES: |-
+        cranelift,singlepass,wasm-c-api,wasmer-artifact-create,static-artifact-create,wasmer-artifact-load,static-artifact-load
     file: build-wasmer
 
 requirements:
@@ -46,18 +50,18 @@ tests:
       recipe:
         - run_test.py
       source:
-        - tests/wasi-wast/wasi/snapshot1/hello.wasm
+        - ${{ cowsay_wasm }}
     requirements:
       run:
         - pytest
-        - if: win
-          then:
-            - m2-grep
     script:
-      - wasmer --version
-      - wasmer --version | grep -ie "${{ version | replace(".", "\\.") }}"
-      - wasmer --help
-      - python run_test.py
+      env:
+        COWSAY_WASM: ${{ cowsay_wasm }}
+      content:
+        - wasmer --version
+        - wasmer --help
+        - wasmer run --help
+        - python run_test.py
 
 about:
   license: MIT
@@ -67,12 +71,8 @@ about:
     compatible with WASI and Emscripten.
   license_file:
     - LICENSE
-    - lib/c-api/tests/wasm-c-api/LICENSE
-    - lib/compiler-llvm/LICENSE
-    - lib/compiler-singlepass/LICENSE
-    - lib/config/LICENSE
-    - tests/wasi-fyi/LICENSE
-    - tests/wast/spec/LICENSE
+    - THIRDPARTY.yml
+    - docs/ATTRIBUTIONS.md
   homepage: https://wasmer.io
   repository: https://github.com/wasmerio/wasmer
   documentation: https://docs.wasmer.io
