@@ -3,6 +3,7 @@ schema_version: 1
 
 context:
   version: "7.2.0"
+  cowsay_wasm: wasmer-test-files/integration/wasm/cowsay.wasm
 
 package:
   name: wasmer
@@ -16,8 +17,8 @@ build:
   number: 0
   script:
     env:
-      DEFAULT_FEATURES: |
-        cranelift,singlepass,wasmer-artifact-create,static-artifact-create,wasmer-artifact-load,static-artifact-load
+      DEFAULT_FEATURES: |-
+        cranelift,singlepass,wasm-c-api,wasmer-artifact-create,static-artifact-create,wasmer-artifact-load,static-artifact-load
     file: build-wasmer
 
 requirements:
@@ -26,7 +27,6 @@ requirements:
     - ${{ compiler("cxx") }}
     - ${{ compiler("rust") }}
     - ${{ stdlib("c") }}
-    - cargo-auditable
     - cargo-bundle-licenses
     - pkg-config
   host:
@@ -50,14 +50,18 @@ tests:
       recipe:
         - run_test.py
       source:
-        - tests/wasi-wast/wasi/snapshot1/hello.wasm
+        - ${{ cowsay_wasm }}
     requirements:
       run:
         - pytest
     script:
-      - wasmer --version
-      - wasmer --help
-      - python run_test.py
+      env:
+        COWAY_WASM: ${{ cowsay_wasm }}
+      content:
+        - wasmer --version
+        - wasmer --help
+        - wasmer run --help
+        - python run_test.py
 
 about:
   license: MIT
@@ -68,6 +72,7 @@ about:
   license_file:
     - LICENSE
     - THIRDPARTY.yml
+    - docs/ATTRIBUTIONS.md
   homepage: https://wasmer.io
   repository: https://github.com/wasmerio/wasmer
   documentation: https://docs.wasmer.io

@@ -6,7 +6,7 @@ _UNAME=$(uname)
 
 export RUST_BACKTRACE=1
 
-# see Makefil around:
+# see Makefile around:
 #   build_compiler_features = --feature
 export FEATURES="${DEFAULT_FEATURES}"
 
@@ -31,7 +31,7 @@ fi
 cd lib/cli
 
 # build statically linked binary with Rust
-cargo auditable install \
+cargo install \
   --locked \
   --no-track \
   --root "${PREFIX}" \
