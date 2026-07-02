@@ -10,12 +10,12 @@ cxx_compiler:
 - vs2022
 libffi:
 - '3.5'
+libunwind:
+- '1.8'
 openssl:
 - '3.5'
 rust_compiler:
 - rust
-rust_compiler_version:
-- '1.94'
 target_platform:
 - win-64
 zlib:
