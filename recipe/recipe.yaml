@@ -31,7 +31,6 @@ requirements:
     - pkg-config
   host:
     - libffi
-    - libunwind
     - openssl
     - zlib
     - if: linux
