@@ -18,7 +18,7 @@ build:
   script:
     env:
       DEFAULT_FEATURES: |-
-        cranelift,singlepass,wasm-c-api,wasmer-artifact-create,static-artifact-create,wasmer-artifact-load,static-artifact-load
+        cranelift,wasm-c-api,wasmer-artifact-create,static-artifact-create,wasmer-artifact-load,static-artifact-load
     file: build-wasmer
 
 requirements:
@@ -27,6 +27,7 @@ requirements:
     - ${{ compiler("cxx") }}
     - ${{ compiler("rust") }}
     - ${{ stdlib("c") }}
+    - cargo-auditable
     - cargo-bundle-licenses
     - pkg-config
   host:

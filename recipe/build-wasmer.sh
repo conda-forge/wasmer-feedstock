@@ -8,7 +8,7 @@ export RUST_BACKTRACE=1
 
 # see Makefile around:
 #   build_compiler_features = --feature
-export FEATURES="${DEFAULT_FEATURES}"
+export FEATURES="singlepass,${DEFAULT_FEATURES}"
 
 if [[ "${_UNAME}" == "Darwin" ]]; then
   # Fix headerpad-max-install-error:
@@ -31,7 +31,7 @@ fi
 cd lib/cli
 
 # build statically linked binary with Rust
-cargo install \
+cargo auditable install \
   --locked \
   --no-track \
   --root "${PREFIX}" \
