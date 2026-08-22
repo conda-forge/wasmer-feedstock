@@ -18,7 +18,7 @@ build:
   script:
     env:
       DEFAULT_FEATURES: |-
-        cranelift,wasm-c-api,wasmer-artifact-create,static-artifact-create,wasmer-artifact-load,static-artifact-load
+        wasm-c-api,wasmer-artifact-create,static-artifact-create,wasmer-artifact-load,static-artifact-load,v8
     file: build-wasmer
 
 requirements:

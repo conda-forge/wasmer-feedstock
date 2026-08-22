@@ -8,19 +8,24 @@
 import os
 import sys
 from subprocess import check_output, call
+import platform
 
 import pytest
 
-IS_LINUX = "linux" in sys.platform
+PLATFORM = platform.system()
 COWSAY_WASM = os.environ["COWSAY_WASM"]
 TEST_TEXT = "{PKG_NAME} {PKG_VERSION}".format(**os.environ)
 
+BACKENDS = {
+    "Linux": ["cranelift", "llvm", "singlepass", "v8"],
+    "Darwin": ["cranelift", "singlepass", "v8"],
+    "Windows": ["v8"],
+}
 
-@pytest.fixture(params=["singlepass", "cranelift", "llvm"])
+
+@pytest.fixture(params=BACKENDS[PLATFORM])
 def a_backend(request) -> str:
-    if request.param == "llvm" and not IS_LINUX:
-        pytest.skip(f"not testing on {sys.platform}")
-    return request.param
+    return f"{request.param}"
 
 
 def test_wasmer_run(a_backend: str) -> None:
