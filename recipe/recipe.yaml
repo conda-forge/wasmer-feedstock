@@ -2,7 +2,7 @@
 schema_version: 1
 
 context:
-  version: "7.2.1"
+  version: "7.3.0"
   cowsay_wasm: wasmer-test-files/integration/wasm/cowsay.wasm
 
 package:
@@ -11,10 +11,10 @@ package:
 
 source:
   url: https://github.com/wasmerio/wasmer/releases/download/v${{ version }}/wasmer-full-source.tar.gz
-  sha256: db842f724c3a26870b786c2078bdab81c4e68d3dd276ce09c92d85f0558be0ce
+  sha256: 8855338e5c806ece263202874f94a495b7b22f34570905028e3c02a10d8fb985
 
 build:
-  number: 1
+  number: 0
   script:
     env:
       DEFAULT_FEATURES: |-
