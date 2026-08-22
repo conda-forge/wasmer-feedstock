@@ -27,7 +27,12 @@ requirements:
     - ${{ compiler("cxx") }}
     - ${{ compiler("rust") }}
     - ${{ stdlib("c") }}
-    - cargo-auditable
+    # can use auditable due to:
+    #     cargo metadata failure: error: package `wasmer-c-api v7.3.0 ($SRC_DIR/lib/c-api)` does not have feature `wasmer-compiler-cranelift`
+    #     help: an optional dependency with that name exists, but the `features` table includes it with the "dep:" syntax so it does not have an implicit feature with that name
+    #     Dependency `wasmer-compiler-cranelift` would be enabled by these features:
+    #     	- cranelift
+    # - cargo-auditable
     - cargo-bundle-licenses
     - pkg-config
   host:

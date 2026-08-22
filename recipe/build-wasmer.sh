@@ -31,7 +31,7 @@ fi
 cd lib/cli
 
 # build statically linked binary with Rust
-cargo auditable install \
+cargo install \
   --locked \
   --no-track \
   --root "${PREFIX}" \
