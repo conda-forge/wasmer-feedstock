@@ -8,4 +8,4 @@ c_stdlib_version:
     then:
       # otherwise fails with:
       #  rust-lld: error: undefined symbol: __libc_single_threaded
-      - "2.32"
+      - "2.34"
