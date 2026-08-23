@@ -8,22 +8,15 @@
 import os
 import sys
 from subprocess import check_output, call
-import platform
 
 import pytest
 
-PLATFORM = platform.system()
 COWSAY_WASM = os.environ["COWSAY_WASM"]
 TEST_TEXT = "{PKG_NAME} {PKG_VERSION}".format(**os.environ)
-
-BACKENDS = {
-    "Linux": ["cranelift", "llvm", "singlepass", "v8"],
-    "Darwin": ["cranelift", "singlepass", "v8"],
-    "Windows": ["v8"],
-}
+BACKENDS = os.environ["BACKENDS"].split()
 
 
-@pytest.fixture(params=BACKENDS[PLATFORM])
+@pytest.fixture(params=sorted(BACKENDS))
 def a_backend(request) -> str:
     return f"{request.param}"
 

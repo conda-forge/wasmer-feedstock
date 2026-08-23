@@ -4,6 +4,14 @@ schema_version: 1
 context:
   version: "7.3.0"
   cowsay_wasm: wasmer-test-files/integration/wasm/cowsay.wasm
+  # features neded for basic wasmer-cli functionality
+  ft_default: wasm-c-api wasmer-artifact-create static-artifact-create wasmer-artifact-load static-artifact-load
+  # other features not available on all platforms
+  ft_v8: ${{ "" if target_platform in ["linux-aarch64", "osx-64"] else "v8" }}
+  ft_linux: ${{ "" if not linux else "llvm" }}
+  ft_unix: ${{ "" if not unix else "cranelift singlepass" }}
+  ft_backends: ${{ [ft_v8, ft_linux, ft_unix] | join(" ") }}
+  features: ${{ [ft_default, ft_backends] | join(" ") | split | sort | join(",") }}
 
 package:
   name: wasmer
@@ -17,8 +25,7 @@ build:
   number: 0
   script:
     env:
-      DEFAULT_FEATURES: |-
-        wasm-c-api,wasmer-artifact-create,static-artifact-create,wasmer-artifact-load,static-artifact-load,v8
+      FEATURES: ${{ features }}
     file: build-wasmer
 
 requirements:
@@ -27,11 +34,7 @@ requirements:
     - ${{ compiler("cxx") }}
     - ${{ compiler("rust") }}
     - ${{ stdlib("c") }}
-    # can use auditable due to:
-    #     cargo metadata failure: error: package `wasmer-c-api v7.3.0 ($SRC_DIR/lib/c-api)` does not have feature `wasmer-compiler-cranelift`
-    #     help: an optional dependency with that name exists, but the `features` table includes it with the "dep:" syntax so it does not have an implicit feature with that name
-    #     Dependency `wasmer-compiler-cranelift` would be enabled by these features:
-    #     	- cranelift
+    # see: https://github.com/wasmerio/wasmer/issues/6606
     # - cargo-auditable
     - cargo-bundle-licenses
     - pkg-config
@@ -64,6 +67,7 @@ tests:
     script:
       env:
         COWSAY_WASM: ${{ cowsay_wasm }}
+        BACKENDS: ${{ ft_backends }}
       content:
         - wasmer --version
         - wasmer --help
