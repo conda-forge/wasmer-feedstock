@@ -6,7 +6,7 @@ _UNAME=$(uname)
 
 export RUST_BACKTRACE=1
 
-echo cargo features: ${FEATURES}
+echo "cargo features: ${FEATURES}"
 
 if [[ "${_UNAME}" == "Darwin" ]]; then
   # Fix headerpad-max-install-error:

@@ -9,3 +9,12 @@ c_stdlib_version:
       # otherwise fails with:
       #  rust-lld: error: undefined symbol: __libc_single_threaded
       - "2.34"
+  - if: osx and arm64
+    then:
+      # otherwise fails with:
+      #     = note: Undefined symbols for architecture arm64:
+      #               "___unw_add_find_dynamic_unwind_sections", referenced from:
+      - '15.0'
+MACOSX_SDK_VERSION:
+  - if: osx and arm64
+    then: '26'
