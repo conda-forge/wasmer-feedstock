@@ -2,8 +2,16 @@
 schema_version: 1
 
 context:
-  version: "7.2.1"
+  version: "7.3.0"
   cowsay_wasm: wasmer-test-files/integration/wasm/cowsay.wasm
+  # features neded for basic wasmer-cli functionality
+  ft_default: wasm-c-api wasmer-artifact-create static-artifact-create wasmer-artifact-load static-artifact-load
+  # other features not available on all platforms
+  ft_v8: ${{ "" if target_platform in ["linux-aarch64", "osx-64"] else "v8" }}
+  ft_linux: ${{ "" if not linux else "llvm" }}
+  ft_unix: ${{ "" if not unix else "cranelift singlepass" }}
+  ft_backends: ${{ [ft_v8, ft_linux, ft_unix] | join(" ") }}
+  features: ${{ [ft_default, ft_backends] | join(" ") | split | sort | join(",") }}
 
 package:
   name: wasmer
@@ -11,14 +19,13 @@ package:
 
 source:
   url: https://github.com/wasmerio/wasmer/releases/download/v${{ version }}/wasmer-full-source.tar.gz
-  sha256: db842f724c3a26870b786c2078bdab81c4e68d3dd276ce09c92d85f0558be0ce
+  sha256: 8855338e5c806ece263202874f94a495b7b22f34570905028e3c02a10d8fb985
 
 build:
-  number: 1
+  number: 0
   script:
     env:
-      DEFAULT_FEATURES: |-
-        cranelift,singlepass,wasm-c-api,wasmer-artifact-create,static-artifact-create,wasmer-artifact-load,static-artifact-load
+      FEATURES: ${{ features }}
     file: build-wasmer
 
 requirements:
@@ -27,6 +34,8 @@ requirements:
     - ${{ compiler("cxx") }}
     - ${{ compiler("rust") }}
     - ${{ stdlib("c") }}
+    # see: https://github.com/wasmerio/wasmer/issues/6606
+    # - cargo-auditable
     - cargo-bundle-licenses
     - pkg-config
   host:
@@ -35,6 +44,7 @@ requirements:
     - zlib
     - if: linux
       then:
+        - clangdev
         - libxkbcommon
         - libxml2-devel
         - llvm-tools
@@ -57,6 +67,7 @@ tests:
     script:
       env:
         COWSAY_WASM: ${{ cowsay_wasm }}
+        BACKENDS: ${{ ft_backends }}
       content:
         - wasmer --version
         - wasmer --help

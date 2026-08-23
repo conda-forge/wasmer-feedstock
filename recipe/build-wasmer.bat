@@ -2,6 +2,8 @@
 :: https://github.com/conda-forge/py-spy-feedstock/blob/master/recipe/bld.bat
 @echo on
 
+echo cargo features: %FEATURES%
+
 cd lib/cli
 
 :: build
@@ -9,7 +11,7 @@ cargo install ^
     --locked ^
     --no-track ^
     --root "%PREFIX%" ^
-    --features "%DEFAULT_FEATURES%" ^
+    --features "%FEATURES%" ^
     --jobs %CPU_COUNT% ^
     --path . ^
     || goto :error
