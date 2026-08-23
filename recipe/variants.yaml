@@ -1,0 +1,11 @@
+llvmdev:
+  - if: linux
+    then:
+      # keep aligned with `LLVM_SYS_XXX_PREFIX` in `build-wasmer.sh`
+      - "22"
+c_stdlib_version:
+  - if: linux
+    then:
+      # otherwise fails with:
+      #  rust-lld: error: undefined symbol: __libc_single_threaded
+      - "2.32"

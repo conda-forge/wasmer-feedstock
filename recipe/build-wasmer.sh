@@ -24,6 +24,7 @@ else
   #   LLVM_SYS_221_PREFIX.
   export LLVM_SYS_221_PREFIX="${PREFIX}"
   export LLVM_ENABLE=1
+  export LIBCLANG_PATH=${PREFIX}/lib
   export FEATURES="llvm,${FEATURES}"
   export RUSTFLAGS="-C link-arg=-Wl,-rpath-link,${PREFIX}/lib -L${PREFIX}/lib"
 fi
