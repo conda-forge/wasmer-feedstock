@@ -2,7 +2,7 @@
 schema_version: 1
 
 context:
-  version: "7.4.0"
+  version: "7.4.1"
   cowsay_wasm: wasmer-test-files/integration/wasm/cowsay.wasm
   # features neded for basic wasmer-cli functionality
   ft_default: wasm-c-api wasmer-artifact-create static-artifact-create wasmer-artifact-load static-artifact-load
@@ -19,7 +19,7 @@ package:
 
 source:
   url: https://github.com/wasmerio/wasmer/releases/download/v${{ version }}/wasmer-full-source.tar.gz
-  sha256: 9a8707ce21dda9859155c7f9c6b6b76a33f42ebc44cbda821691a8a1aac7a1a4
+  sha256: 038fc2a5caf10419f09f489d35fd962408b43ddc6cbb0214062343b7f45e5ea6
 
 build:
   number: 0
