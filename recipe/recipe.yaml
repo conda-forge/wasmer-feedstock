@@ -22,7 +22,7 @@ source:
   sha256: 5504da6c260ab320e768376bf8eea3c409d53e28da035c6281360067a721a672
 
 build:
-  number: 0
+  number: 1
   script:
     env:
       FEATURES: ${{ features }}
